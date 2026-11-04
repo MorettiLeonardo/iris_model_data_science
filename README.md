@@ -82,21 +82,3 @@ Resultado do exemplo:
 
 Ou seja, a flor nova pertence a um grupo de versicolor com sépala de ~6,2 × 3,0 cm e pétala de ~4,5 × 1,4 cm.
 
-## Dúvidas comuns
-
-**O que são os arquivos `.model`?**
-São objetos Python salvos em disco com o `pickle`. O `pickle.dump` grava o objeto treinado e o `pickle.load` o carrega de volta igualzinho. A extensão `.model` é só um nome (poderia ser `.pkl`). Serve para treinar uma vez só e reutilizar sem treinar de novo.
-⚠️ Só abra com `pickle.load` arquivos que você mesmo gerou: um pickle malicioso pode executar código na máquina.
-
-**Por que normalizar?**
-O KMeans usa distância euclidiana. Sem normalizar, a medida com valores maiores dominaria o cálculo de distância.
-
-**Por que salvar o normalizador e não só o modelo?**
-A flor nova precisa ser normalizada com o mesmo mínimo/máximo do treino. Se fizesse `fit` só com ela, os valores sairiam numa escala diferente e o `predict` daria errado. E sem ele não dá para desnormalizar o centróide.
-
-**Por que 6 clusters se só existem 3 espécies?**
-O KMeans não sabe quantas espécies existem: o k vem do método do cotovelo, que olha só para as distâncias. Com 6, cada espécie acabou dividida em 2 clusters (por exemplo, versicolor menores e maiores), e nenhum cluster mistura espécies. Um cluster é um grupo de flores parecidas, não uma espécie.
-
-**Diferenças em relação ao `nomalizar.py` da aula**
-- A aula chama `fit` e depois `fit_transform`, o que treina o normalizador duas vezes (mesmo resultado). Aqui foi usado só `transform` depois do `fit`.
-- O `from_dummies` precisou do passo extra de converter proporções em 0/1 (explicado no passo 8).
