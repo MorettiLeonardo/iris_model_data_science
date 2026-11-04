@@ -2,10 +2,6 @@
 
 Agrupa as flores da base `iris.csv` com o KMeans e descobre a qual grupo (cluster) uma flor nova pertence.
 
-Baseado no código das aulas:
-- **21/10/2026**: balanceamento, número ótimo de clusters, treino do KMeans e `pickle.dump` (projeto `cluster1`)
-- **28/10/2026**: normalização com MinMax e `get_dummies` (`nomalizar.py`)
-
 ## Arquivos
 
 | Arquivo | O que é |
